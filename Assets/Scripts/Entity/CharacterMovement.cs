@@ -9,13 +9,19 @@ public class CharacterMovement : MonoBehaviour
     private MoveController _controller;
 
     private Vector2 _movementDIrection = Vector2.zero;
-    [SerializeField] float speed;
+    private float speed;
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; } 
+    }
 
     private Rigidbody2D _rigidbody;
     private void Awake()
     {
         _controller = GetComponent<MoveController>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        Speed = GameManager.Instance.PlayerSpeed;
     }
 
     private void FixedUpdate()
