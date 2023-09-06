@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     public Button JoinButton;
 
     public InputField Name;
-    public GameObject PlayerName;
+    //public GameObject PlayerName;
 
     public GameObject SelectPanel;
     public GameObject NamePanel;
@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
         if (UIinstance == null)
         {
             UIinstance = this;
-            PlayerName = GameManager.Instance.PlayerName;
+            //PlayerName = GameManager.Instance.PlayerName;
         }
         else
         {
@@ -48,11 +48,7 @@ public class UIManager : MonoBehaviour
 
     public void ChangeNameButtonClick()
     {
-        if (Name != null && Name.text.Length > 2 && Name.text.Length < 10)
-        {
-            //PlayerName.GetComponent<Text>().text = Name.text;
-            NamePanel.SetActive(true);
-        }
+        NamePanel.SetActive(true);
     }
 
     public void JoinButtonClick()
