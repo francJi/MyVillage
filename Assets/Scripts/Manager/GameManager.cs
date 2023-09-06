@@ -9,8 +9,11 @@ public class GameManager : MonoBehaviour
     public Text NameText;
     public float PlayerSpeed;
     public GameObject Player;
+    public GameObject PlayerSprite;
     public GameObject PlayerName;
     public GameObject NameDeliver;
+    public GameObject ImageDeliver;
+    public GameObject AnimationDeliver;
 
 
     private void Awake()
@@ -18,9 +21,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            NameDeliver = GameObject.Find("NameDeliver");
-            NameText.text = NameDeliver.GetComponent<Text>().text;
-            Destroy(NameDeliver);
+            Debug.Log("Awake");
         }
         else
         {
@@ -30,7 +31,22 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (Instance != null && NameDeliver != null)
+        {
+            Debug.Log("Start");
+            NameDeliver = GameObject.Find("NameDeliver");
+            NameText.text = NameDeliver.GetComponent<Text>().text;
+            ImageDeliver = GameObject.Find("ImageDeliver");
+           
+            PlayerSprite.GetComponent<SpriteRenderer>().sprite = ImageDeliver.GetComponent<SpriteRenderer>().sprite;
+            AnimationDeliver = GameObject.Find("AnimationDeliver");
+            PlayerSprite.GetComponent<Animator>().runtimeAnimatorController = AnimationDeliver.GetComponent<Animator>().runtimeAnimatorController;
+            Destroy(NameDeliver);
+        }
+        else
+        {
+            Awake();
+        }
     }
 
     // Update is called once per frame

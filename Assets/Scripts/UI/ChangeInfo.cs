@@ -18,7 +18,7 @@ public class ChangeInfo : MonoBehaviour
     public GameObject SelectPanel;
     public GameObject SpriteSelectButton;
     public GameObject SelectedButton;
-    public Image SelectedImage;
+    public SpriteRenderer SelectedSprite;
     public void JoinButtonClick()
     {
         if (Name != null && Name.text.Length > 2 && Name.text.Length < 10)
@@ -49,16 +49,16 @@ public class ChangeInfo : MonoBehaviour
     {
         if (SelectedButton != null)
         {
-            Image[] AllImage = SelectedButton.GetComponentsInChildren<Image>();
-            foreach (Image image in AllImage)
+            SpriteRenderer[] AllSprite = SelectedButton.GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer sprite in AllSprite)
             {
-                if (image.name.Contains("Sprite"))
+                if (sprite.name.Contains("Sprite"))
                 {
-                    SelectedImage = image;
+                    SelectedSprite = sprite;
                 }
             }
-            SpriteSelectButton.GetComponent<Image>().sprite = SelectedImage.sprite;
-            ImageDeliver.GetComponent<Image>().sprite = SelectedImage.sprite;
+            SpriteSelectButton.GetComponent<Image>().sprite = SelectedSprite.sprite;
+            ImageDeliver.GetComponent<SpriteRenderer>().sprite = SelectedSprite.sprite;
 
             Animator selectedAnimator = SelectedButton.GetComponent<Animator>();
             RuntimeAnimatorController animController = selectedAnimator.runtimeAnimatorController;
