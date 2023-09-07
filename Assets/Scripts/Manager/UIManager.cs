@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public GameObject SelectedButton;
     public SpriteRenderer SelectedSprite;
 
+    public bool IsUI = false;
     private void Awake()
     {
         if (UIinstance == null)
@@ -44,11 +45,13 @@ public class UIManager : MonoBehaviour
     public void SelectButtonClick()
     {
         SelectPanel.SetActive(true);
+        IsUI = true;
     }
 
     public void ChangeNameButtonClick()
     {
         NamePanel.SetActive(true);
+        IsUI = true;
     }
 
     public void JoinButtonClick()
@@ -56,6 +59,7 @@ public class UIManager : MonoBehaviour
         if (Name != null && Name.text.Length > 2 && Name.text.Length < 10)
         {
             NamePanel.SetActive(false);
+            IsUI = false;
         }
         else
         {
@@ -84,6 +88,7 @@ public class UIManager : MonoBehaviour
         if (SelectedButton != null)
         {
             SelectPanel.SetActive(false);
+            IsUI = false;
         }
     }
 

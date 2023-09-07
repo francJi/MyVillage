@@ -14,19 +14,20 @@ public class ChangeInfo : MonoBehaviour
     public GameObject AnimationDeliver;
 
     public InputField Name;
-    public Text NameText;
+    public static string NameText;
     public GameObject SelectPanel;
     public GameObject SpriteSelectButton;
     public GameObject SelectedButton;
     public SpriteRenderer SelectedSprite;
+
+
+    public static int Type = 1;
     public void JoinButtonClick()
     {
         if (Name != null && Name.text.Length > 2 && Name.text.Length < 10)
         {
 
-            NameDeliver.GetComponent<Text>().text = Name.text;
-            DontDestroyOnLoad(Deliver);
-            //DontDestroyOnLoad(ImageDeliver);
+            NameText = Name.text.ToString();
             SceneManager.LoadScene("MainScene");
         }
         else
@@ -58,12 +59,25 @@ public class ChangeInfo : MonoBehaviour
                 }
             }
             SpriteSelectButton.GetComponent<Image>().sprite = SelectedSprite.sprite;
-            ImageDeliver.GetComponent<SpriteRenderer>().sprite = SelectedSprite.sprite;
 
-            Animator selectedAnimator = SelectedButton.GetComponent<Animator>();
-            RuntimeAnimatorController animController = selectedAnimator.runtimeAnimatorController;
-            AnimationDeliver.GetComponent<Animator>().runtimeAnimatorController = animController;
+            Button[] childArray = SelectPanel.GetComponentsInChildren<Button>();
+            if (SelectedButton != null)
+            {
+                for (int i = 0; i < childArray.Length; i++)
+                {
+                    if (childArray[i].name == SelectedButton.GetComponent<Button>().name)
+                    {
+                        Type = i;
+                    }
+                }
+            }
+            //ImageDeliver.GetComponent<SpriteRenderer>().sprite = SelectedSprite.sprite;
+
+            //Animator selectedAnimator = SelectedButton.GetComponent<Animator>();
+            //RuntimeAnimatorController animController = selectedAnimator.runtimeAnimatorController;
+            //AnimationDeliver.GetComponent<Animator>().runtimeAnimatorController = animController;
             SelectPanel.SetActive(false);
+            Debug.Log(Type);
         } 
     }
     // Start is called before the first frame update
