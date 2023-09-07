@@ -54,24 +54,17 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("PlayerImage null");
             }
+            Debug.Log($"Animations/{(AnimationSet)Type}");
             Animator tempAnimator = Resources.Load<Animator>($"Animations/{(AnimationSet)Type}.anim");
             if (tempAnimator == null)
             {
                 Debug.Log("tempAnimator is null");
             }
+            // ¾ÈºÒ·¯¿ÍÁü..
             PlayerImage.GetComponent<Animator>().runtimeAnimatorController = Resources.Load<Animator>($"Animations/{(AnimationSet)Type}.anim").runtimeAnimatorController;
-            Debug.Log($"Animations/{(AnimationSet)Type}");
+            
             PlayerImage.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Resources/Character/PlayerSprite/{(SpriteSet)Type}.png");
-            //Debug.Log("Start");
-            //NameDeliver = GameObject.Find("NameDeliver");
-            //PlayerName.GetComponent<Text>().text = NameDeliver.GetComponent<Text>().text;
 
-            //ImageDeliver = GameObject.Find("ImageDeliver");
-            //PlayerSprite.GetComponent<SpriteRenderer>().sprite = ImageDeliver.GetComponent<SpriteRenderer>().sprite;
-
-            //AnimationDeliver = GameObject.Find("AnimationDeliver");
-            //PlayerSprite.GetComponent<Animator>().runtimeAnimatorController = AnimationDeliver.GetComponent<Animator>().runtimeAnimatorController;
-            //Destroy(NameDeliver);
         }
         else
         {
