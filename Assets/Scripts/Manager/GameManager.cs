@@ -12,9 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
     public GameObject PlayerImage;
     public GameObject PlayerName;
-    public GameObject NameDeliver;
-    public GameObject ImageDeliver;
-    public GameObject AnimationDeliver;
 
     public int Type;
 
@@ -61,9 +58,9 @@ public class GameManager : MonoBehaviour
                 Debug.Log("tempAnimator is null");
             }
             // ¾ÈºÒ·¯¿ÍÁü..
-            PlayerImage.GetComponent<Animator>().runtimeAnimatorController = Resources.Load<Animator>($"Animations/{(AnimationSet)Type}.anim").runtimeAnimatorController;
+            //PlayerImage.GetComponent<Animator>().runtimeAnimatorController = Resources.Load<Animator>($"Animations/{(AnimationSet)Type}.anim").runtimeAnimatorController;
             
-            PlayerImage.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Resources/Character/PlayerSprite/{(SpriteSet)Type}.png");
+            //PlayerImage.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Resources/Character/PlayerSprite/{(SpriteSet)Type}.png");
 
         }
         else

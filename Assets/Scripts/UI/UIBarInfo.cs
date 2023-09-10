@@ -10,10 +10,21 @@ public class UIBarInfo : MonoBehaviour
     public GameObject SelectedButton;
     public SpriteRenderer SelectedSprite;
 
+    public GameObject SideBar;
+
     public void CharacterSelectClick()
     {
         SelectPanel.SetActive(true);
     }
 
+    public void SideBarClose()
+    {
+        SideBar.SetActive(false);
+    }
+
+    public void SideBarOpen()
+    {
+        SideBar.SetActive(true);
+    }
 
 }
